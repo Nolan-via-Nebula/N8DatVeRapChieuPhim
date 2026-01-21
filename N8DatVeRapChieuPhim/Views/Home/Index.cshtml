@@ -1,0 +1,132 @@
+@{
+ViewData["Title"] = "Trang chủ";
+Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+<!-- Hero Banner -->
+<div class="rounded-3 p-5 mb-5 text-white shadow"
+     style="background: linear-gradient(135deg, #183d67, #1c1c1c);">
+    <div class="text-center">
+        <h1 class="display-4 fw-bold mb-3 text-warning">
+            <i class="fas fa-film"></i>
+            Chào mừng đến với N8 Cinema
+        </h1>
+        <p class="lead mb-4">
+            Đặt vé xem phim nhanh chóng – Xem lịch chiếu – Trải nghiệm điện ảnh đỉnh cao
+        </p>
+        <a asp-controller="Phims" asp-action="Index" class="btn btn-warning btn-lg shadow">
+            <i class="fas fa-ticket-alt"></i> Đặt vé ngay
+        </a>
+    </div>
+</div>
+
+<!-- Feature Cards -->
+<div class="row g-4 mt-3">
+
+    <!-- Phim đang chiếu -->
+    <div class="col-md-4">
+        <div class="card h-100 text-center border-warning shadow-sm hover-card">
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <i class="fas fa-video fa-4x text-warning"></i>
+                </div>
+                <h5 class="card-title fw-bold">Phim Đang Chiếu</h5>
+                <p class="card-text text-muted">
+                    Danh sách các bộ phim mới nhất đang được chiếu tại rạp
+                </p>
+                <a asp-controller="Phims" asp-action="Index" class="btn btn-warning">
+                    <i class="fas fa-arrow-right"></i> Xem phim
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lịch chiếu -->
+    <div class="col-md-4">
+        <div class="card h-100 text-center border-primary shadow-sm hover-card">
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <i class="fas fa-calendar-alt fa-4x text-primary"></i>
+                </div>
+                <h5 class="card-title fw-bold">Lịch Chiếu</h5>
+                <p class="card-text text-muted">
+                    Xem lịch chiếu phim theo ngày, theo rạp và theo suất chiếu
+                </p>
+                <a asp-controller="Home" asp-action="LichChieu" class="btn btn-primary">
+                    <i class="fas fa-arrow-right"></i> Xem lịch
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Khuyến mãi -->
+    <div class="col-md-4">
+        <div class="card h-100 text-center border-danger shadow-sm hover-card">
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <i class="fas fa-tags fa-4x text-danger"></i>
+                </div>
+                <h5 class="card-title fw-bold">Ưu Đãi & Khuyến Mãi</h5>
+                <p class="card-text text-muted">
+                    Cập nhật các chương trình khuyến mãi và ưu đãi vé xem phim
+                </p>
+                <a asp-controller="Home" asp-action="KhuyenMai" class="btn btn-danger">
+                    <i class="fas fa-arrow-right"></i> Xem ưu đãi
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Hướng dẫn đặt vé -->
+<div class="row mt-5">
+    <div class="col-md-12">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-warning">
+                <h5 class="mb-0">
+                    <i class="fas fa-info-circle"></i> Hướng Dẫn Đặt Vé
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row text-muted">
+                    <div class="col-md-4">
+                        <h6>
+                            <i class="fas fa-film text-warning"></i> Chọn phim
+                        </h6>
+                        <p class="small">
+                            Chọn bộ phim bạn yêu thích trong danh sách phim đang chiếu
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6>
+                            <i class="fas fa-calendar-check text-primary"></i> Chọn suất chiếu
+                        </h6>
+                        <p class="small">
+                            Chọn ngày chiếu, giờ chiếu và phòng chiếu phù hợp
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6>
+                            <i class="fas fa-ticket-alt text-success"></i> Đặt vé & Thanh toán
+                        </h6>
+                        <p class="small">
+                            Chọn ghế, xác nhận thông tin và hoàn tất đặt vé
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hover-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.25) !important;
+    }
+</style>

@@ -1,0 +1,126 @@
+@model N8DatVeRapChieuPhim.Models.Phim
+
+@{
+    ViewData["Title"] = "Thêm mới phim";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-film"></i> Thông tin phim
+                </h5>
+            </div>
+
+            <div class="card-body p-4">
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="alert alert-danger"
+                         role="alert">
+                    </div>
+
+                    <div class="row g-3">
+
+                        <div class="col-md-12">
+                            <label asp-for="MaPhim" class="form-label fw-bold">
+                                Mã phim <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="MaPhim"
+                                   class="form-control"
+                                   placeholder="Nhập mã phim (VD: PH001)" />
+                            <span asp-validation-for="MaPhim" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label asp-for="TenPhim" class="form-label fw-bold">
+                                Tên phim <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="TenPhim"
+                                   class="form-control"
+                                   placeholder="Nhập tên phim" />
+                            <span asp-validation-for="TenPhim" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="TheLoai" class="form-label fw-bold">
+                                Thể loại <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="TheLoai"
+                                   class="form-control"
+                                   placeholder="Hành động, Tình cảm, Kinh dị..." />
+                            <span asp-validation-for="TheLoai" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="ThoiLuong" class="form-label fw-bold">
+                                Thời lượng (phút) <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="ThoiLuong"
+                                   type="number"
+                                   class="form-control"
+                                   placeholder="VD: 120" />
+                            <span asp-validation-for="ThoiLuong" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label asp-for="DaoDien" class="form-label fw-bold">
+                                Đạo diễn <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="DaoDien"
+                                   class="form-control"
+                                   placeholder="Nhập tên đạo diễn" />
+                            <span asp-validation-for="DaoDien" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label asp-for="HinhAnh" class="form-label fw-bold">
+                                Hình ảnh (URL) <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="HinhAnh"
+                                   class="form-control"
+                                   placeholder="VD: /images/phim/avatar.jpg" />
+                            <span asp-validation-for="HinhAnh" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label asp-for="MoTa" class="form-label fw-bold">
+                                Mô tả <span class="text-danger">*</span>
+                            </label>
+                            <textarea asp-for="MoTa"
+                                      class="form-control"
+                                      rows="4"
+                                      placeholder="Nhập mô tả nội dung phim"></textarea>
+                            <span asp-validation-for="MoTa" class="text-danger small"></span>
+                        </div>
+
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <div class="d-flex justify-content-between flex-wrap gap-2">
+                        <a asp-action="Index"
+                           class="btn btn-outline-secondary px-4">
+                            <i class="fas fa-arrow-left"></i> Quay lại
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-primary px-4">
+                            <i class="fas fa-save"></i> Lưu phim
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

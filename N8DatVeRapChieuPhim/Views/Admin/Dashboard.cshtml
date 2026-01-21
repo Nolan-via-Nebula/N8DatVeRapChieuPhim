@@ -1,0 +1,122 @@
+@model N8DatVeRapChieuPhim.Models.ViewModel.DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Statistics Cards -->
+<div class="row g-4 mb-4">
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted mb-2">Tổng Phim</h6>
+                        <h2 class="mb-0 fw-bold">@Model.TongPhim</h2>
+                    </div>
+                    <div class="bg-primary bg-opacity-10 p-3 rounded">
+                        <i class="fas fa-video fa-2x text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted mb-2">Phòng Chiếu</h6>
+                        <h2 class="mb-0 fw-bold">@Model.TongPhongChieu</h2>
+                    </div>
+                    <div class="bg-success bg-opacity-10 p-3 rounded">
+                        <i class="fas fa-door-open fa-2x text-success"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted mb-2">Suất Chiếu</h6>
+                        <h2 class="mb-0 fw-bold">@Model.TongSuatChieu</h2>
+                    </div>
+                    <div class="bg-info bg-opacity-10 p-3 rounded">
+                        <i class="fas fa-clock fa-2x text-info"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted mb-2">Vé Đã Bán</h6>
+                        <h2 class="mb-0 fw-bold">@Model.TongVeDaBan</h2>
+                    </div>
+                    <div class="bg-warning bg-opacity-10 p-3 rounded">
+                        <i class="fas fa-ticket-alt fa-2x text-warning"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Quick Actions -->
+<div class="row g-4">
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-coins me-2 text-success"></i>Doanh Thu Tổng
+                </h5>
+            </div>
+            <div class="card-body">
+                <h2 class="fw-bold text-success">
+                    @Model.TongDoanhThu.ToString("N0") VNĐ
+                </h2>
+                <p class="text-muted mb-0">
+                    Tổng doanh thu từ các vé đã bán
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-bolt me-2"></i>Thao Tác Nhanh
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a asp-controller="Phims" asp-action="Create" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Thêm Phim
+                    </a>
+                    <a asp-controller="SuatChieus" asp-action="Create" class="btn btn-outline-primary">
+                        <i class="fas fa-clock"></i> Thêm Suất Chiếu
+                    </a>
+                    <a asp-controller="PhongChieus" asp-action="Index" class="btn btn-outline-success">
+                        <i class="fas fa-door-open"></i> Quản Lý Phòng
+                    </a>
+                    <a asp-controller="Ves" asp-action="Index" class="btn btn-outline-warning">
+                        <i class="fas fa-ticket-alt"></i> Danh Sách Vé
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

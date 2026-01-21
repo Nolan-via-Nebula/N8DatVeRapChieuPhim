@@ -1,0 +1,79 @@
+@model N8DatVeRapChieuPhim.Models.Phim
+
+@{
+    ViewData["Title"] = "Xóa phim";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-danger">Xác nhận xóa phim</h2>
+
+<div class="alert alert-warning mt-3">
+    <strong>Cảnh báo:</strong> Hành động này không thể hoàn tác.
+</div>
+
+<div class="card mt-3">
+    <div class="card-header bg-danger text-white">
+        <h5 class="mb-0">Thông tin phim </h5>
+    </div>
+
+    <div class="card-body">
+
+        <div class="row mb-2">
+            <div class="col-md-3"><strong>Mã phim:</strong></div>
+            <div class="col-md-9">@Model.MaPhim</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-3"><strong>Tên phim:</strong></div>
+            <div class="col-md-9">@Model.TenPhim</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-3"><strong>Thể loại:</strong></div>
+            <div class="col-md-9">@Model.TheLoai</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-3"><strong>Thời lượng:</strong></div>
+            <div class="col-md-9">@Model.ThoiLuong phút</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-3"><strong>Đạo diễn:</strong></div>
+            <div class="col-md-9">@Model.DaoDien</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-3"><strong>Mô tả:</strong></div>
+            <div class="col-md-9">@Model.MoTa</div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Hình ảnh:</strong></div>
+            <div class="col-md-9">
+                <img src="@Model.HinhAnh"
+                     alt="@Model.TenPhim"
+                     class="img-fluid rounded"
+                     style="max-height:180px;" />
+            </div>
+        </div>
+
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="d-flex gap-2">
+                <button type="submit"
+                        class="btn btn-danger"
+                        onclick="return confirm('Bạn có chắc chắn muốn xóa phim này?');">
+                    <i class="bi bi-trash"></i> Xác nhận xóa
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Hủy
+                </a>
+            </div>
+        </form>
+
+    </div>
+</div>
