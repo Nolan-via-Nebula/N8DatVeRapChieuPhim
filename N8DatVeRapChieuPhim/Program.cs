@@ -9,6 +9,15 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Cấu hình Cookie Authentication -> Nếu không có Cookie xác thực
+// --> Chuyển sang đường dẫn đăng nhập --> /Account/Login
+builder.Services.AddAuthentication("MyCookie")
+    .AddCookie("MyCookie", options =>
+    {
+        options.LoginPath = "/Account/Login";
+        // Không có AccessDeniedPath trong dự án này
+    });
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -27,9 +36,11 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
 
+// Đăng ký sử dụng xác thực
+// Thứ tự quan trọng: Authentication → Authorization
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

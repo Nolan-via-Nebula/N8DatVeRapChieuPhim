@@ -51,7 +51,7 @@ namespace N8DatVeRapChieuPhim.Data
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Username)
+                entity.Property(e => e.UserName)
                     .IsRequired()
                     .HasMaxLength(50);
                 entity.Property(e => e.PasswordHash)
@@ -60,7 +60,7 @@ namespace N8DatVeRapChieuPhim.Data
                     .IsRequired()
                     .HasMaxLength(20);
                 // Username là duy nhất
-                entity.HasIndex(u => u.Username).IsUnique();
+                entity.HasIndex(u => u.UserName).IsUnique();
             });
 
         }
