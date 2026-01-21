@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using N8DatVeRapChieuPhim.Data;
@@ -5,6 +6,8 @@ using N8DatVeRapChieuPhim.Models;
 
 namespace N8DatVeRapChieuPhim.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class PhimsController : Controller
     {
         private readonly ApplicationDbContext _context;

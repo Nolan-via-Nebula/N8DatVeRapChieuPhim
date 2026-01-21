@@ -35,19 +35,25 @@ namespace N8DatVeRapChieuPhim.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            var hasher = new PasswordHasher<User>();
+            // Kiểm tra username trùng
+            if (_context.Users.Any(u => u.UserName == model.UserName))
+            {
+                ModelState.AddModelError("UserName", "Tài khoản đã tồn tại");
+                return View(model);
+            }
 
+            var hasher = new PasswordHasher<User>();
             var user = new User
             {
                 UserName = model.UserName,
-                Role = "User"  // Mặc định là User
+                Role = "User"
             };
-
             user.PasswordHash = hasher.HashPassword(user, model.Password);
 
             _context.Users.Add(user);
             _context.SaveChanges();
 
+            TempData["Success"] = "Đăng ký thành công! Vui lòng đăng nhập.";
             return RedirectToAction("Login");
         }
 
@@ -102,7 +108,7 @@ namespace N8DatVeRapChieuPhim.Controllers
 
             // Điều hướng theo role
             if (user.Role == "Admin")
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Dashboard", "Admin");
 
             return RedirectToAction("Index", "Home");
         }
@@ -115,5 +121,10 @@ namespace N8DatVeRapChieuPhim.Controllers
             return RedirectToAction("Login");
         }
 
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }

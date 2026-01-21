@@ -19,6 +19,16 @@ namespace N8DatVeRapChieuPhim.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = 1,
+                    UserName = "NvN",
+                    PasswordHash = ("270826"),
+                    Role = "Admin"
+                }
+            );
+
             // Cấu hình cho Phim
             modelBuilder.Entity<Phim>(entity =>
             {

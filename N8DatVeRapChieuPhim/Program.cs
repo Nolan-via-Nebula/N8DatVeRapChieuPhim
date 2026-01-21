@@ -15,7 +15,9 @@ builder.Services.AddAuthentication("MyCookie")
     .AddCookie("MyCookie", options =>
     {
         options.LoginPath = "/Account/Login";
-        // Không có AccessDeniedPath trong dự án này
+        options.AccessDeniedPath = "/Account/AccessDenied";
+        options.ExpireTimeSpan = TimeSpan.FromHours(24);
+        options.SlidingExpiration = true;
     });
 
 var app = builder.Build();
